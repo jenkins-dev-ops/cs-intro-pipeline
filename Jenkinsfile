@@ -1,19 +1,10 @@
 pipeline {
   agent none
   stages {
-    stage('Event Trigger') {
-      when {
-        expression {
-          return currentBuild.rawBuild.getCause(com.cloudbees.jenkins.plugins.pipeline.events.EventTriggerCause)
-        }
-        
-      }
+    stage('Publish Event') {
       steps {
-        echo 'triggered by published event'
+        publishEvent simpleEvent('beeEvent')
       }
     }
-  }
-  triggers {
-    eventTrigger(simpleMatch('beeEvent'))
   }
 }
