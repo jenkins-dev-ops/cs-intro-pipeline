@@ -1,9 +1,10 @@
 pipeline {
   agent any
   stages {
-    stage('Publish Event') {
+    stage('Say Hello') {
       steps {
-        publishEvent simpleEvent('beeEvent')
+        echo 'Hello World!'
+        sh 'java -version'
       }
     }
   }
